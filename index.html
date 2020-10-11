@@ -45,7 +45,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/head.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">YiJia Wu</a></h1>
@@ -105,7 +105,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/head.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">YiJia Wu</h1>
@@ -158,6 +158,270 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-最大网络秩(5536)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/11/%E6%9C%80%E5%A4%A7%E7%BD%91%E7%BB%9C%E7%A7%A9(5536)/">最大网络秩(leetcode5536)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/11/%E6%9C%80%E5%A4%A7%E7%BD%91%E7%BB%9C%E7%A7%A9(5536)/" class="archive-article-date">
+  	<time datetime="2020-10-11T07:12:16.072Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+
+
+
+<h3 id="1-最大网络秩-5536"><a href="#1-最大网络秩-5536" class="headerlink" title="1 最大网络秩(5536)"></a>1 <a href="https://leetcode-cn.com/problems/maximal-network-rank/" target="_blank" rel="noopener">最大网络秩(5536)</a></h3><p><strong>题目描述：来源力扣</strong></p>
+<p><a href="https://imgchr.com/i/0cRKKS" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/10/11/0cRKKS.jpg" alt="0cRKKS.jpg"></a></p>
+<p><a href="https://imgchr.com/i/0cRMDg" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/10/11/0cRMDg.jpg" alt="0cRMDg.jpg"></a></p>
+<p><a href="https://imgchr.com/i/0cRmgf" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/10/11/0cRmgf.jpg" alt="0cRmgf.jpg"></a></p>
+<blockquote>
+<p>截图源：力扣 <a href="https://leetcode-cn.com/problems/maximal-network-rank/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximal-network-rank/</a></p>
+</blockquote>
+<h4 id="方法一：邻接矩阵"><a href="#方法一：邻接矩阵" class="headerlink" title="方法一：邻接矩阵"></a>方法一：邻接矩阵</h4><p>注意这句话</p>
+<blockquote>
+<p>两座不同城市构成的 <strong>城市对</strong> 的 <strong>网络秩</strong> 定义为：与这两座城市 <strong>直接</strong> 相连的道路总数。如果存在一条道路直接连接这两座城市，则这条道路只计算 <strong>一次</strong> 。</p>
+</blockquote>
+<p>前半句：其实就是两个城市的度数之和 = <code>sum</code>；后半句：如果两个城市之间有一条直接连接的边，则<code>sum - 1</code>。因为这相当于多算了一条边，而实际上A、B之间只有一条边</p>
+<p>图示：</p>
+<p><a href="https://imgchr.com/i/0cRnv8" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/10/11/0cRnv8.jpg" alt="0cRnv8.jpg"></a></p>
+<p><strong>思路：</strong></p>
+<p>建立邻接矩阵记录两点之间是否有直连边。然后暴力遍历，记录每个点的度数。</p>
+<p>最后一句两点之间是否有直连边计算最终的网络秩。</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maximalNetworkRank</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] roads)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span>[][] hasRoad = <span class="keyword">new</span> <span class="keyword">boolean</span>[n][n];</span><br><span class="line">        <span class="keyword">int</span>[] degree = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] road : roads) &#123;</span><br><span class="line">            <span class="keyword">int</span> start = road[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> end = road[<span class="number">1</span>];</span><br><span class="line">            <span class="comment">//由于 start -- end 有直连的边所以标记一下</span></span><br><span class="line">            hasRoad[start][end] = <span class="keyword">true</span>;</span><br><span class="line">            hasRoad[end][start] = <span class="keyword">true</span>;</span><br><span class="line">            <span class="comment">//由于 这条边是从start发出去的 ； end是这条边的终点 所以要对start 和 end进行度数的计算</span></span><br><span class="line">            degree[start]++;</span><br><span class="line">            degree[end]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//开始求出两个城市之间的度数最大 并且如果两个城市之间有直接连的边需要减一 </span></span><br><span class="line">        <span class="comment">//减一 是因为 A - B 多算了一个度  实际上只有一条 而计算时都加了一个</span></span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; ++j) &#123;</span><br><span class="line">                <span class="comment">//两个城市之间的度数和</span></span><br><span class="line">                <span class="keyword">int</span> cur = degree[i] + degree[j];</span><br><span class="line">                cur = hasRoad[i][j] ? cur - <span class="number">1</span> : cur;</span><br><span class="line">                res = Math.max(res, cur);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>时间复杂度：<code>O(N^2)</code></li>
+<li>空间复杂度：<code>O(N)</code></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/11/%E6%9C%80%E5%A4%A7%E7%BD%91%E7%BB%9C%E7%A7%A9(5536)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-总览" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/09/%E6%80%BB%E8%A7%88/">佳的算法记录</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/09/%E6%80%BB%E8%A7%88/" class="archive-article-date">
+  	<time datetime="2020-10-09T02:07:14.279Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目总结"><a href="#题目总结" class="headerlink" title="题目总结"></a>题目总结</h1><p align = "right"> Author: 佳什么佳</p>
+
+<p align="right">From 2020/7/26 — To be continued</p>
+
+<hr>
+<p><strong>Description：</strong></p>
+<p>​                            <strong>参加算法训练营课程 以及 自己练习的题目总结</strong></p>
+<p>()内为力扣题号</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">娱乐</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/09/%E6%80%BB%E8%A7%88/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-yoga" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/08/yoga/">yoga</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/08/yoga/" class="archive-article-date">
+  	<time datetime="2020-10-08T15:45:40.492Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+
+
+
+<h2 id="YOGA-is-perfect"><a href="#YOGA-is-perfect" class="headerlink" title="YOGA is perfect"></a>YOGA is perfect</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yoga is perfect</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">娱乐</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/08/yoga/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Merge_逆序对、小和问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -178,18 +442,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="MergeSort"><a href="#MergeSort" class="headerlink" title="MergeSort"></a>MergeSort</h3><p><strong>分治思想：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reversePairs</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums==<span class="keyword">null</span>||nums.length&lt;<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        mergeSort(nums,<span class="number">0</span>,nums.length-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] nums,<span class="keyword">int</span> L,<span class="keyword">int</span> R)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(L==R)&#123;</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> mid = L+(R-L)/<span class="number">2</span>;</span><br><span class="line">        mergeSort(nums,L,mid);</span><br><span class="line">        mergeSort(nums,mid+<span class="number">1</span>,R);</span><br><span class="line">        merge(nums,L,mid,R);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//这里是要升序哦 </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums,<span class="keyword">int</span> L,<span class="keyword">int</span> mid, <span class="keyword">int</span> R)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] help = <span class="keyword">new</span> <span class="keyword">int</span>[R - L + <span class="number">1</span>];</span><br><span class="line">        <span class="comment">//利用外排进行合并</span></span><br><span class="line">        <span class="keyword">int</span> p1 = L;</span><br><span class="line">        <span class="keyword">int</span> p2 = mid+<span class="number">1</span>;</span><br><span class="line">        <span class="comment">//i指向help数组</span></span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(p1&lt;=mid&amp;&amp;p2&lt;=R)&#123;</span><br><span class="line">            help[i++] = nums[p1] &lt; nums[p2] ? nums[p1++] : nums[p2++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(p1&lt;=mid)&#123;</span><br><span class="line">            help[i++] = nums[p1++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(p2&lt;=R)&#123;</span><br><span class="line">            help[i++] = nums[p2++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//更新L 到 R 这段数值</span></span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;help.length;i++)&#123;</span><br><span class="line">            nums[L+i] = help[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="逆序对问题"><a href="#逆序对问题" class="headerlink" title="逆序对问题"></a>逆序对问题</h3><p>对于每一个nums，去右边榨取比它更小的数字 当前所榨取的个数 为R - P2 + 1</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">//使用一个全局变量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">reversePairs</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums==<span class="keyword">null</span>||nums.length&lt;<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//使用归并排序</span></span><br><span class="line">        mergeSort(nums,<span class="number">0</span>,nums.length-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//归并</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] nums,<span class="keyword">int</span> L,<span class="keyword">int</span> R)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(L==R)&#123;</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> mid = L+(R-L)/<span class="number">2</span>;</span><br><span class="line">        <span class="comment">//对右边进行</span></span><br><span class="line">        mergeSort(nums,L,mid);</span><br><span class="line">        <span class="comment">//对左边进行</span></span><br><span class="line">        mergeSort(nums,mid+<span class="number">1</span>,R);</span><br><span class="line">        <span class="comment">//左右两边进行合并  注意是逆序的合并</span></span><br><span class="line">        merge(nums,L,mid,R);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//这里是要逆序哦 </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums,<span class="keyword">int</span> L,<span class="keyword">int</span> mid, <span class="keyword">int</span> R)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] help = <span class="keyword">new</span> <span class="keyword">int</span>[R - L + <span class="number">1</span>];</span><br><span class="line">        <span class="comment">//利用外派进行合并</span></span><br><span class="line">        <span class="keyword">int</span> p1 = L;</span><br><span class="line">        <span class="keyword">int</span> p2 = mid+<span class="number">1</span>;</span><br><span class="line">        <span class="comment">//i指向help数组</span></span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(p1&lt;=mid&amp;&amp;p2&lt;=R)&#123;</span><br><span class="line">            <span class="comment">//有逆序对</span></span><br><span class="line">            <span class="keyword">if</span>(nums[p1]&gt;nums[p2])&#123;</span><br><span class="line">                res += R - p2 + <span class="number">1</span>;</span><br><span class="line">                help[i++] = nums[p1++];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//暂时没有逆序对，往后面去榨 因为较小的数字在后面，所以往后面去找</span></span><br><span class="line">                help[i++] = nums[p2++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(p1&lt;=mid)&#123;</span><br><span class="line">            help[i++] = nums[p1++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(p2&lt;=R)&#123;</span><br><span class="line">            help[i++] = nums[p2++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//更新L 到 R 这段数值</span></span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;help.length;i++)&#123;</span><br><span class="line">            nums[L+i] = help[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="小和问题"><a href="#小和问题" class="headerlink" title="小和问题"></a>小和问题</h3><p>与逆序对问题相反。</p>
-
+        <h3 id="MergeSort"><a href="#MergeSort" class="headerlink" title="MergeSort"></a>MergeSort</h3>
+        
       
 
       
@@ -322,6 +576,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">娱乐</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
