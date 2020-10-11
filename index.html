@@ -178,38 +178,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-
-
-
-<h3 id="1-最大网络秩-5536"><a href="#1-最大网络秩-5536" class="headerlink" title="1 最大网络秩(5536)"></a>1 <a href="https://leetcode-cn.com/problems/maximal-network-rank/" target="_blank" rel="noopener">最大网络秩(5536)</a></h3><p><strong>题目描述：来源力扣</strong></p>
-<p><a href="https://imgchr.com/i/0cRKKS" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/10/11/0cRKKS.jpg" alt="0cRKKS.jpg"></a></p>
-<p><a href="https://imgchr.com/i/0cRMDg" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/10/11/0cRMDg.jpg" alt="0cRMDg.jpg"></a></p>
-<p><a href="https://imgchr.com/i/0cRmgf" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/10/11/0cRmgf.jpg" alt="0cRmgf.jpg"></a></p>
-<blockquote>
-<p>截图源：力扣 <a href="https://leetcode-cn.com/problems/maximal-network-rank/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximal-network-rank/</a></p>
-</blockquote>
-<h4 id="方法一：邻接矩阵"><a href="#方法一：邻接矩阵" class="headerlink" title="方法一：邻接矩阵"></a>方法一：邻接矩阵</h4><p>注意这句话</p>
-<blockquote>
-<p>两座不同城市构成的 <strong>城市对</strong> 的 <strong>网络秩</strong> 定义为：与这两座城市 <strong>直接</strong> 相连的道路总数。如果存在一条道路直接连接这两座城市，则这条道路只计算 <strong>一次</strong> 。</p>
-</blockquote>
-<p>前半句：其实就是两个城市的度数之和 = <code>sum</code>；后半句：如果两个城市之间有一条直接连接的边，则<code>sum - 1</code>。因为这相当于多算了一条边，而实际上A、B之间只有一条边</p>
-<p>图示：</p>
-<p><a href="https://imgchr.com/i/0cRnv8" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/10/11/0cRnv8.jpg" alt="0cRnv8.jpg"></a></p>
-<p><strong>思路：</strong></p>
-<p>建立邻接矩阵记录两点之间是否有直连边。然后暴力遍历，记录每个点的度数。</p>
-<p>最后一句两点之间是否有直连边计算最终的网络秩。</p>
-<p><strong>代码：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maximalNetworkRank</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span>[][] roads)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span>[][] hasRoad = <span class="keyword">new</span> <span class="keyword">boolean</span>[n][n];</span><br><span class="line">        <span class="keyword">int</span>[] degree = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] road : roads) &#123;</span><br><span class="line">            <span class="keyword">int</span> start = road[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> end = road[<span class="number">1</span>];</span><br><span class="line">            <span class="comment">//由于 start -- end 有直连的边所以标记一下</span></span><br><span class="line">            hasRoad[start][end] = <span class="keyword">true</span>;</span><br><span class="line">            hasRoad[end][start] = <span class="keyword">true</span>;</span><br><span class="line">            <span class="comment">//由于 这条边是从start发出去的 ； end是这条边的终点 所以要对start 和 end进行度数的计算</span></span><br><span class="line">            degree[start]++;</span><br><span class="line">            degree[end]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//开始求出两个城市之间的度数最大 并且如果两个城市之间有直接连的边需要减一 </span></span><br><span class="line">        <span class="comment">//减一 是因为 A - B 多算了一个度  实际上只有一条 而计算时都加了一个</span></span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; ++j) &#123;</span><br><span class="line">                <span class="comment">//两个城市之间的度数和</span></span><br><span class="line">                <span class="keyword">int</span> cur = degree[i] + degree[j];</span><br><span class="line">                cur = hasRoad[i][j] ? cur - <span class="number">1</span> : cur;</span><br><span class="line">                res = Math.max(res, cur);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>复杂度分析：</strong></p>
-<ul>
-<li>时间复杂度：<code>O(N^2)</code></li>
-<li>空间复杂度：<code>O(N)</code></li>
-</ul>
-
+        <p><a href="https://imgchr.com/i/0cfQts" target="_blank" rel="noopener">Always<img src="https://s1.ax1x.com/2020/10/11/0cfQts.md.png" alt="0cfQts.md.png"></a></p>
+        
       
 
       
