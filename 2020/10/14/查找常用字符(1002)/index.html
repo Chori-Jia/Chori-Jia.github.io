@@ -6,17 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/10 | 佳</title>
+  <title>查找常用字符串(leetcode1002) | 佳</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="路漫漫其修远兮">
-<meta property="og:type" content="website">
-<meta property="og:title" content="佳">
-<meta property="og:url" content="http://yoursite.com/archives/2020/10/index.html">
+  <meta name="description" content="只要是你，永远是你！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="查找常用字符串(leetcode1002)">
+<meta property="og:url" content="http://yoursite.com/2020/10/14/%E6%9F%A5%E6%89%BE%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6(1002)/index.html">
 <meta property="og:site_name" content="佳">
-<meta property="og:description" content="路漫漫其修远兮">
+<meta property="og:description" content="只要是你，永远是你！">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/14/0I1A58.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/14/0IG2M4.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/14/0IGWL9.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/14/0IGRsJ.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2020/10/14/0IGczF.jpg">
+<meta property="article:published_time" content="2020-10-14T11:57:10.161Z">
+<meta property="article:modified_time" content="2020-10-14T12:10:22.165Z">
 <meta property="article:author" content="YiJia Wu">
+<meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/10/14/0I1A58.jpg">
   
     <link rel="alternative" href="/atom.xml" title="佳" type="application/atom+xml">
   
@@ -156,36 +165,85 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-查找常用字符(1002)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      查找常用字符串(leetcode1002)
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/14/%E6%9F%A5%E6%89%BE%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6(1002)/" class="archive-article-date">
+
+        
+        <a href="/2020/10/14/%E6%9F%A5%E6%89%BE%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6(1002)/" class="archive-article-date">
   	<time datetime="2020-10-14T11:57:10.161Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-14</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/14/%E6%9F%A5%E6%89%BE%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6(1002)/">查找常用字符串(leetcode1002)</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>只要是你，永远是你！</strong></p>
+<p><a href="https://imgchr.com/i/0I1A58" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/10/14/0I1A58.jpg" alt="0I1A58.jpg"></a></p>
+<a id="more"></a>
 
-        <div class="article-info info-on-right">
-          
+<blockquote>
+<p>本文仅是个人对本题的一个总结，便于自己复习。</p>
+<p>文中有多处思路与方法是采用官方和其他大佬的思路。如有侵权，请联系，我马上删除！谢谢！</p>
+</blockquote>
+<h3 id="3-查找常用字符-1002"><a href="#3-查找常用字符-1002" class="headerlink" title="3.查找常用字符(1002)"></a>3.<a href="https://leetcode-cn.com/problems/find-common-characters/" target="_blank" rel="noopener">查找常用字符</a>(1002)</h3><p><a href="https://imgchr.com/i/0IG2M4" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/10/14/0IG2M4.jpg" alt="0IG2M4.jpg"></a></p>
+<blockquote>
+<p>来源：<a href="https://leetcode-cn.com/problems/find-common-characters/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-common-characters/</a></p>
+</blockquote>
+<h4 id="解法一：哈希-用数组替代"><a href="#解法一：哈希-用数组替代" class="headerlink" title="解法一：哈希(用数组替代)"></a>解法一：哈希(用数组替代)</h4><p><strong>思路：</strong></p>
+<p>题目实际就是有n个字符串，统计每个字符在哥哥字符串中出现的最小次数即可。</p>
+<p>根据<a href="https://leetcode-cn.com/u/carlsun-2/" target="_blank" rel="noopener">代码随想录</a>的思路可以得知：</p>
+<p>整体思路就是统计出搜索字符串里26个字符的出现的频率，然后取每个字符频率最小值，最后转成输出格式就可以了。</p>
+<p>如图：</p>
+<p><img src="https://s1.ax1x.com/2020/10/14/0IGWL9.png" alt="0IGWL9.png"></p>
+<blockquote>
+<p>来源：<a href="https://leetcode-cn.com/problems/find-common-characters/solution/1002-cha-zhao-chang-yong-zi-fu-ha-xi-fa-jing-dian-/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-common-characters/solution/1002-cha-zhao-chang-yong-zi-fu-ha-xi-fa-jing-dian-/</a></p>
+</blockquote>
+<p>根据<a href="https://leetcode-cn.com/u/leetcode-solution/" target="_blank" rel="noopener">力扣官方题解</a>思路：</p>
+<p><img src="https://s1.ax1x.com/2020/10/14/0IGRsJ.jpg" alt="0IGRsJ.jpg"></p>
+<p><strong>代码：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">commonChars</span><span class="params">(String[] A)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="comment">//定义minFreq 对应26个小写字母的次数</span></span><br><span class="line">        <span class="keyword">int</span>[] minFreq = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        Arrays.fill(minFreq, Integer.MAX_VALUE);</span><br><span class="line">        <span class="comment">//开始遍历每一个字符串，统计该字符串中每个字符的次数，然后与minFreq进行比较，以最小值进行更新</span></span><br><span class="line">        <span class="keyword">for</span> (String word : A) &#123;</span><br><span class="line">            <span class="keyword">int</span> len = word.length();</span><br><span class="line">            <span class="keyword">int</span>[] curFreq = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i) &#123;</span><br><span class="line">                <span class="keyword">char</span> c = word.charAt(i);</span><br><span class="line">                curFreq[c - <span class="string">'a'</span>]++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//与minFreq比较 然后更新</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; ++i) &#123;</span><br><span class="line">                minFreq[i] = Math.min(minFreq[i], curFreq[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//统计完毕 开始根据字符出现字符来添加进res</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; minFreq[i]; ++j) &#123;</span><br><span class="line">                res.add(String.valueOf((<span class="keyword">char</span>)(i + <span class="string">'a'</span>)));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>复杂度分析：</strong></p>
+<p><img src="https://s1.ax1x.com/2020/10/14/0IGczF.jpg" alt="0IGczF.jpg"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -197,133 +255,126 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/10/14/%E6%9F%A5%E6%89%BE%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6(1002)/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/11/%E6%9C%80%E5%A4%A7%E7%BD%91%E7%BB%9C%E7%A7%A9(5536)/" class="archive-article-date">
-  	<time datetime="2020-10-11T07:12:16.072Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/10/11/%E6%9C%80%E5%A4%A7%E7%BD%91%E7%BB%9C%E7%A7%A9(5536)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">最大网络秩(leetcode5536)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/11/%E6%9C%80%E5%A4%A7%E7%BD%91%E7%BB%9C%E7%A7%A9(5536)/">最大网络秩(leetcode5536)</a>
-    </h1>
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="查找常用字符(1002)" data-title="查找常用字符串(leetcode1002)" data-url="http://yoursite.com/2020/10/14/%E6%9F%A5%E6%89%BE%E5%B8%B8%E7%94%A8%E5%AD%97%E7%AC%A6(1002)/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/09/%E6%80%BB%E8%A7%88/" class="archive-article-date">
-  	<time datetime="2020-10-09T02:07:14.279Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/09/%E6%80%BB%E8%A7%88/">佳的算法记录</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">娱乐</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/08/yoga/" class="archive-article-date">
-  	<time datetime="2020-10-08T15:45:40.492Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/08/yoga/">yoga</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">娱乐</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -346,8 +397,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
